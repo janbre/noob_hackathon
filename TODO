@@ -2,5 +2,17 @@
 - Find maximum depth of objects
 - For each JSON object, retrieve and store all keys at the different levels
 
+First pass:
+	gather all fields on level 1
+	create dict with key = field
+Second pass:
+	for each key in dict:
+		add field to key's value
+		if string, add to list
+		if list or dict, add as dict with key = field
+Third pass:
+	for each value in dict key:
+		if string, nothing
+		if 
 
 

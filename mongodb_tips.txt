@@ -1,0 +1,17 @@
+MONGODB-TIPS
+--------------------
+
+Insert a JSON object by converting it to a dictionary:
+
+import json
+import mongodb
+jsonobject = open('file.json', 'r').readline()
+my_dict = json.loads(jsonobject)
+connection = pymongo.Connection()
+db = connection.test_database
+coll = connection.test_database.courses
+coll.insert(my_dict)
+
+
+
+
