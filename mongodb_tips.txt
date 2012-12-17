@@ -13,5 +13,14 @@ coll = connection.test_database.courses
 coll.insert(my_dict)
 
 
+Regex query:
+
+Find all courses where infoType.text contains 3[A-Z]4[0-9]
+db.courses.find({"course.infoType.text":/\D{3}\d{4}/}).pretty()
+db.courses.find({"course.infoType.text":/\D{2,3}\d{4}/}).pretty() (this finds both IT and TDT)
+
+
+Find all courses where TDT4120 is recommended knowledge
+db.courses.find({"course.infoType.text":/\TDT4120/}).pretty()
 
 

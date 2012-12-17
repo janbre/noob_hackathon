@@ -1,0 +1,33 @@
+- Finne fag fra valgte institutt(er) som IKKE har eksamen denne/disse datoen(e) og ssortere resultat etter valgt kriterie
+	db.courses.find({"course.assessment.date":"2012-12-18", $or:[{"course.ouId":INSTITUTT1},{"course.ouId":INSTITUTT2}]}, {"course.code":1})
+
+
+- Finne alle fag som gir studiepoeng > x
+	sortere resultat etter valgt kriterie
+
+- Finne alle fag som gir studiepoeng == X
+	db.courses.find({"course.credit":X}, {"course.code":1})
+
+- Alle fag som gir studiepoeng større enn X mindre enn Y
+	db.courses.find({"course.credit":{$gte:X, $lte:Y}}, {"course.code":1})
+
+
+- Finne fag etter fagområde
+
+- Finne fag som har eksamen senest eller tidligst yyyy.mm.dd
+	db.courses.find({"course.ouId":INSTITUTTID, "course.assessment.date":{$gt:"ETTER", $lt:"FØR"}}, {"course.code":1})
+		- her er instituttid valgfritt, men får ekstremt mange treff hvis den ikke er satt
+
+- Finne fag med faglærer NN
+	db.courses.find({"course.educationalRole.person.displayName":"NAVN PÅ FAGLÆRER"}, {"course.code":1})
+
+- Finne hvilke fag som gir studiepoengsreduksjon for valgt(e) fag
+
+- Finne fag som er anbefalte forkunnskaper for valgt fag
+	
+
+- Finne fag der valgt fag er anbefalte forkunnskaper 
+	db.courses.find({"course.infoType.text":/\FAGKODE/i}, {"course.code":1}) -> printer fagkoder
+	db.courses.find({"course.infoType.text":/\FAGKODE/i}) 			 -> printer hele fag-objektet
+
+
