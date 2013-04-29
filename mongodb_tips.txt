@@ -1,6 +1,15 @@
 MONGODB-TIPS
 --------------------
 
+- db shows the current database
+- show dbs shows list of databases
+- use mydb switch to mydb
+- db.getCollectionNames() lists all collections in current database
+
+
+
+
+
 Insert a JSON object by converting it to a dictionary:
 
 import json
