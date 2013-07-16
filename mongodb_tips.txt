@@ -1,3 +1,16 @@
+INSTALLATION:
+---------------------
+sudo apt-get install mongodb
+
+Need pymongo:
+	pip needed to install pymongo:
+		sudo apt-get install python-setuptools
+		curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+		sudo python get-pip.py
+	
+	sudo pip install pymongo
+
+
 MONGODB-TIPS
 --------------------
 
@@ -8,12 +21,12 @@ MONGODB-TIPS
 
 
 
-
+http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/
 
 Insert a JSON object by converting it to a dictionary:
 
 import json
-import mongodb
+import pymongo
 jsonobject = open('file.json', 'r').readline()
 my_dict = json.loads(jsonobject)
 connection = pymongo.Connection()
