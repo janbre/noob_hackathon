@@ -1,14 +1,11 @@
+// Updated for MongoDB v.3.0.4
+
+
+
 INSTALLATION:
 ---------------------
-sudo apt-get install mongodb
-
-Need pymongo:
-	pip needed to install pymongo:
-		sudo apt-get install python-setuptools
-		curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-		sudo python get-pip.py
-	
-	sudo pip install pymongo
+Install mongodb from official site
+Use pip to install pymongo
 
 
 MONGODB-TIPS
@@ -20,8 +17,11 @@ MONGODB-TIPS
 - db.getCollectionNames() lists all collections in current database
 
 
-
 http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/
+
+
+PYMONGO-USAGE
+------------------------
 
 Insert a JSON object by converting it to a dictionary:
 
@@ -29,7 +29,7 @@ import json
 import pymongo
 jsonobject = open('file.json', 'r').readline()
 my_dict = json.loads(jsonobject)
-connection = pymongo.Connection()
+connection = pymongo.MongoClient()
 db = connection.test_database
 coll = connection.test_database.courses
 coll.insert(my_dict)
@@ -43,6 +43,6 @@ db.courses.find({"course.infoType.text":/\D{2,3}\d{4}/}).pretty() (this finds bo
 
 
 Find all courses where TDT4120 is recommended knowledge
-db.courses.find({"course.infoType.text":/\TDT4120/}).pretty()
+db.courses.find({"course.infoType.text": {$regex: /TDT4120/}}).pretty()
 
 
